@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header>
+    <div>Devon Fauchon</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2><span>About Me</span></h2>
+    <p>
+      I'm a student at Humber College, currently in my first year of the Web Development program.
+      I'm passionate about creating clean, user-friendly websites and applications that solve real problems.
+      I enjoy learning new technologies and am always looking for ways to improve my skills and stay
+      up-to-date with industry trends.
+    </p>
+    <p>When I'm not coding, you can find me at the ice rink, gym, or playing games with friends.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>Click a project to reveal more details.</p>
+
+    <div class="project-gallery">
+
+      <div class="project-card">
+        <h3>Inventory Management System</h3>
+        <p class="project-summary">A JavaScript OOP project built with classes and inheritance.</p>
+        <button class="toggle-btn">Show Details</button>
+        <div class="project-details hidden">
+          <p>Built using vanilla JavaScript. Includes a Product base class, a PerishableProduct subclass, and a Store class to manage inventory. Features static discount methods and full form validation.</p>
+          <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p class="project-summary">This portfolio — designed and built from scratch.</p>
+        <button class="toggle-btn">Show Details</button>
+        <div class="project-details hidden">
+          <p>A multi-section portfolio built with semantic HTML and custom CSS. Includes a sticky header, smooth scroll navigation, responsive layout, and JavaScript interactivity.</p>
+          <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Project 3</h3>
+        <p class="project-summary">Coming soon — stay tuned!</p>
+        <button class="toggle-btn">Show Details</button>
+        <div class="project-details hidden">
+          <p>Details for this project will be added in a future chapter.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Want to get in touch? Fill out the form below and I'll get back to you.</p>
+
+    <form id="contact-form" novalidate>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" />
+        <span class="error-msg hidden" id="name-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" />
+        <span class="error-msg hidden" id="email-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your message..."></textarea>
+        <span class="error-msg hidden" id="message-error"></span>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message</button>
+
+      <p class="success-msg hidden" id="form-success">
+        Thanks for reaching out! I will get back to you soon.
+      </p>
+
+    </form>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Devon Fauchon. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>
