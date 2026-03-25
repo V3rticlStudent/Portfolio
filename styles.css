@@ -1,0 +1,201 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap');
+
+/* ── Tokens ── */
+:root {
+  --cream:   #f5f0e8;
+  --ink:     #1a1a1a;
+  --slate:   #4a5568;
+  --accent:  #c8773a;
+  --border:  #ddd5c8;
+  --serif:   'Playfair Display', Georgia, serif;
+  --sans:    'Lato', sans-serif;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* ── HEADER ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+
+header div {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--slate);
+  position: relative;
+  transition: color 0.2s;
+}
+
+/* Underline slide-in on hover */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+nav a:hover { color: var(--ink); }
+nav a:hover::after { width: 100%; }
+
+/* ── HERO / ABOUT ── */
+#about {
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 60px;
+  max-width: 860px;
+  animation: fadeUp 0.8s ease both;
+}
+
+#about h2 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 7vw, 80px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+  color: var(--ink);
+}
+
+/* Accent underline on the heading */
+#about h2 span {
+  display: inline-block;
+  border-bottom: 4px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+#about p {
+  font-size: 17px;
+  color: var(--slate);
+  max-width: 620px;
+  margin-bottom: 16px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+  margin: 0 60px 16px;
+}
+
+/* ── SECTIONS ── */
+section:not(#about) {
+  padding: 80px 60px;
+  border-top: 1px solid var(--border);
+  animation: fadeUp 0.7s ease both;
+}
+
+section h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+section p {
+  font-size: 16px;
+  color: var(--slate);
+  max-width: 640px;
+  margin-bottom: 12px;
+}
+
+/* Projects placeholder card */
+#projects .placeholder {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 18px 28px;
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--border);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 32px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer p {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--border);
+}
+
+/* Small accent dot in footer */
+footer::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 12px;
+}
+
+/* ── ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  header          { padding: 16px 24px; }
+  #about          { padding: 64px 24px; }
+  section:not(#about) { padding: 56px 24px; }
+  .divider        { margin-left: 24px; }
+  footer          { padding: 24px; }
+  nav ul          { gap: 20px; }
+}
