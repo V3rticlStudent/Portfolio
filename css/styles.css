@@ -1,7 +1,7 @@
-/* ── Google Fonts ── */
+/*  Google Fonts  */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap');
 
-/* ── Tokens (Light Mode) ── */
+/*  Tokens (Light Mode)  */
 :root {
   --cream:   #f5f0e8;
   --ink:     #1a1a1a;
@@ -16,7 +16,7 @@
   --transition-theme: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* ── Dark Mode Tokens ── */
+/*  Dark Mode Tokens  */
 body.dark-mode {
   --cream:   #1a1a2e;
   --ink:     #e8e3d8;
@@ -25,7 +25,7 @@ body.dark-mode {
   --card-bg: #16213e;
 }
 
-/* ── Reset ── */
+/*  Reset  */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
@@ -39,7 +39,7 @@ body {
   transition: var(--transition-theme);
 }
 
-/* ── HEADER ── */
+/*  HEADER  */
 header {
   position: sticky;
   top: 0;
@@ -92,7 +92,7 @@ nav a::after {
 nav a:hover { color: var(--ink); }
 nav a:hover::after { width: 100%; }
 
-/* ── DARK MODE TOGGLE ── */
+/*  DARK MODE TOGGLE  */
 .dark-mode-btn {
   background: none;
   border: 1px solid var(--border);
@@ -110,7 +110,7 @@ nav a:hover::after { width: 100%; }
   transform: scale(1.1);
 }
 
-/* ── HERO / ABOUT ── */
+/*  HERO / ABOUT  */
 #about {
   min-height: 88vh;
   display: flex;
@@ -144,7 +144,7 @@ nav a:hover::after { width: 100%; }
   margin-bottom: 16px;
 }
 
-/* ── DIVIDER ── */
+/*  DIVIDER  */
 .divider {
   width: 60px;
   height: 2px;
@@ -152,7 +152,7 @@ nav a:hover::after { width: 100%; }
   margin: 0 60px 16px;
 }
 
-/* ── SECTIONS ── */
+/*  SECTIONS  */
 section:not(#about) {
   padding: 80px 60px;
   border-top: 1px solid var(--border);
@@ -176,7 +176,7 @@ section p {
   margin-bottom: 12px;
 }
 
-/* ── FILTER BAR ── */
+/*  FILTER BAR  */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -218,7 +218,7 @@ section p {
   font-style: italic;
 }
 
-/* ── PROJECT GALLERY ── */
+/*  PROJECT GALLERY  */
 .project-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -257,7 +257,7 @@ section p {
   margin-bottom: 12px;
 }
 
-/* ── TAGS ── */
+/*  TAGS  */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -281,7 +281,7 @@ section p {
   color: var(--slate);
 }
 
-/* ── TOGGLE BUTTON ── */
+/*  TOGGLE BUTTON  */
 .toggle-btn {
   background: none;
   border: 1px solid var(--accent);
@@ -320,7 +320,35 @@ section p {
   display: none;
 }
 
-/* ── CONTACT FORM ── */
+/*  SKILLS  */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.skill-badge {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.skill-badge:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/*  CONTACT FORM  */
 #contact-form {
   max-width: 540px;
   margin-top: 28px;
@@ -393,7 +421,7 @@ section p {
 .submit-btn:hover  { opacity: 0.85; }
 .submit-btn:active { transform: scale(0.98); }
 
-/* ── FOOTER ── */
+/*  FOOTER  */
 footer {
   padding: 32px 60px;
   border-top: 1px solid var(--border);
@@ -420,13 +448,13 @@ footer::before {
   margin-right: 12px;
 }
 
-/* ── ANIMATION ── */
+/*  ANIMATION  */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── RESPONSIVE ── */
+/*  RESPONSIVE  */
 @media (max-width: 640px) {
   header          { padding: 16px 20px; gap: 12px; flex-wrap: wrap; }
   #about          { padding: 64px 24px; }
