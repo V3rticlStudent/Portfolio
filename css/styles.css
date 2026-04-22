@@ -1,15 +1,28 @@
 /* ── Google Fonts ── */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap');
 
-/* ── Tokens ── */
+/* ── Tokens (Light Mode) ── */
 :root {
   --cream:   #f5f0e8;
   --ink:     #1a1a1a;
   --slate:   #4a5568;
   --accent:  #c8773a;
   --border:  #ddd5c8;
+  --card-bg: #ffffff;
   --serif:   'Playfair Display', Georgia, serif;
   --sans:    'Lato', sans-serif;
+
+  /* Smooth theme transitions */
+  --transition-theme: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ── Dark Mode Tokens ── */
+body.dark-mode {
+  --cream:   #1a1a2e;
+  --ink:     #e8e3d8;
+  --slate:   #a0aec0;
+  --border:  #2d2d4e;
+  --card-bg: #16213e;
 }
 
 /* ── Reset ── */
@@ -23,6 +36,7 @@ body {
   font-family: var(--sans);
   font-weight: 300;
   line-height: 1.75;
+  transition: var(--transition-theme);
 }
 
 /* ── HEADER ── */
@@ -36,6 +50,7 @@ header {
   padding: 20px 60px;
   background: var(--cream);
   border-bottom: 1px solid var(--border);
+  transition: var(--transition-theme);
 }
 
 header div {
@@ -63,7 +78,6 @@ nav a {
   transition: color 0.2s;
 }
 
-/* Underline slide-in on hover */
 nav a::after {
   content: '';
   position: absolute;
@@ -77,6 +91,24 @@ nav a::after {
 
 nav a:hover { color: var(--ink); }
 nav a:hover::after { width: 100%; }
+
+/* ── DARK MODE TOGGLE ── */
+.dark-mode-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: border-color 0.2s, transform 0.15s;
+  color: var(--ink);
+}
+
+.dark-mode-btn:hover {
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
 
 /* ── HERO / ABOUT ── */
 #about {
@@ -99,7 +131,6 @@ nav a:hover::after { width: 100%; }
   color: var(--ink);
 }
 
-/* Accent underline on the heading */
 #about h2 span {
   display: inline-block;
   border-bottom: 4px solid var(--accent);
@@ -126,6 +157,7 @@ section:not(#about) {
   padding: 80px 60px;
   border-top: 1px solid var(--border);
   animation: fadeUp 0.7s ease both;
+  transition: var(--transition-theme);
 }
 
 section h2 {
@@ -144,44 +176,46 @@ section p {
   margin-bottom: 12px;
 }
 
-/* Projects placeholder card */
-#projects .placeholder {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 18px 28px;
-  border: 1px dashed var(--border);
-  border-radius: 4px;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--border);
-}
-
-/* ── FOOTER ── */
-footer {
-  padding: 32px 60px;
-  border-top: 1px solid var(--border);
+/* ── FILTER BAR ── */
+.filter-bar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 8px;
 }
 
-footer p {
+.filter-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--slate);
+  font-family: var(--sans);
   font-size: 12px;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--border);
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 
-/* Small accent dot in footer */
-footer::before {
-  content: '';
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
   background: var(--accent);
-  margin-right: 12px;
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* No results message */
+.no-results {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--slate);
+  font-style: italic;
 }
 
 /* ── PROJECT GALLERY ── */
@@ -193,15 +227,20 @@ footer::before {
 }
 
 .project-card {
-  background: #fff;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 24px;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, opacity 0.3s, transform 0.3s, var(--transition-theme);
 }
 
 .project-card:hover {
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+
+/* Fade-out when filtered */
+.project-card.hidden {
+  display: none;
 }
 
 .project-card h3 {
@@ -215,10 +254,34 @@ footer::before {
 .project-summary {
   font-size: 14px;
   color: var(--slate);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-/* Show/Hide toggle button */
+/* ── TAGS ── */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tag {
+  background: rgba(200, 119, 58, 0.12);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+}
+
+.tag--muted {
+  background: rgba(74, 85, 104, 0.1);
+  color: var(--slate);
+}
+
+/* ── TOGGLE BUTTON ── */
 .toggle-btn {
   background: none;
   border: 1px solid var(--accent);
@@ -253,7 +316,6 @@ footer::before {
   margin-top: 8px;
 }
 
-/* Utility class — JS toggles this */
 .hidden {
   display: none;
 }
@@ -281,7 +343,7 @@ footer::before {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  background: #fff;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 4px;
   color: var(--ink);
@@ -290,7 +352,7 @@ footer::before {
   font-weight: 300;
   padding: 10px 14px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, var(--transition-theme);
   resize: vertical;
 }
 
@@ -299,7 +361,6 @@ footer::before {
   border-color: var(--accent);
 }
 
-/* Error message shown by JS */
 .error-msg {
   display: block;
   margin-top: 5px;
@@ -307,7 +368,6 @@ footer::before {
   color: #c0392b;
 }
 
-/* Success message shown by JS */
 .success-msg {
   margin-top: 16px;
   font-size: 14px;
@@ -333,6 +393,33 @@ footer::before {
 .submit-btn:hover  { opacity: 0.85; }
 .submit-btn:active { transform: scale(0.98); }
 
+/* ── FOOTER ── */
+footer {
+  padding: 32px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: var(--transition-theme);
+}
+
+footer p {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--border);
+}
+
+footer::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 12px;
+}
+
 /* ── ANIMATION ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -341,10 +428,11 @@ footer::before {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
-  header          { padding: 16px 24px; }
+  header          { padding: 16px 20px; gap: 12px; flex-wrap: wrap; }
   #about          { padding: 64px 24px; }
   section:not(#about) { padding: 56px 24px; }
   .divider        { margin-left: 24px; }
   footer          { padding: 24px; }
   nav ul          { gap: 20px; }
+  .filter-bar     { gap: 8px; }
 }
