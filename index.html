@@ -17,6 +17,9 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+    <button class="dark-mode-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <span class="dm-icon">🌙</span>
+    </button>
   </header>
 
   <section id="about">
@@ -34,11 +37,24 @@
     <h2>Projects</h2>
     <p>Click a project to reveal more details.</p>
 
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="javascript">JavaScript</button>
+      <button class="filter-btn" data-filter="html-css">HTML / CSS</button>
+      <button class="filter-btn" data-filter="coming-soon">Coming Soon</button>
+    </div>
+
     <div class="project-gallery">
 
-      <div class="project-card">
+      <div class="project-card" data-category="javascript html-css">
         <h3>Inventory Management System</h3>
         <p class="project-summary">A JavaScript OOP project built with classes and inheritance.</p>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+        </div>
         <button class="toggle-btn">Show Details</button>
         <div class="project-details hidden">
           <p>Built using vanilla JavaScript. Includes a Product base class, a PerishableProduct subclass, and a Store class to manage inventory. Features static discount methods and full form validation.</p>
@@ -46,9 +62,14 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="html-css javascript">
         <h3>Portfolio Website</h3>
         <p class="project-summary">This portfolio — designed and built from scratch.</p>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+        </div>
         <button class="toggle-btn">Show Details</button>
         <div class="project-details hidden">
           <p>A multi-section portfolio built with semantic HTML and custom CSS. Includes a sticky header, smooth scroll navigation, responsive layout, and JavaScript interactivity.</p>
@@ -56,9 +77,12 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="coming-soon">
         <h3>Project 3</h3>
         <p class="project-summary">Coming soon — stay tuned!</p>
+        <div class="project-tags">
+          <span class="tag tag--muted">Coming Soon</span>
+        </div>
         <button class="toggle-btn">Show Details</button>
         <div class="project-details hidden">
           <p>Details for this project will be added in a future chapter.</p>
@@ -66,6 +90,8 @@
       </div>
 
     </div>
+
+    <p class="no-results hidden" id="no-results">No projects match this filter.</p>
   </section>
 
   <section id="contact">
